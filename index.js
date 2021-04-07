@@ -1,15 +1,16 @@
-var core = require('@actions/core');
-var github = require('@actions/github');
+// importing node framework
+const express = require("express");
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  var nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  var time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  var payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
-}
+const app = express();
+
+// Respond with "Hello World via Github Actions" for requests that hit our root "/"
+app.get("/", function (req, res) {
+ return res.send("Hello World via Github Actions");
+});
+
+// listen to port 7000 by default
+app.listen(process.env.PORT || 7000, () => {
+  console.log("Server is running");
+});
+
+module.exports = app;
