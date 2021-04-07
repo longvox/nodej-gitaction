@@ -43,4 +43,4 @@ jobs:
           cd ~/nodejs-gitaction
           git pull origin master
           npm install --production
-          pm2 restart index
+
