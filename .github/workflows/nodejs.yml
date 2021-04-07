@@ -40,7 +40,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          cd ~/node-github-demo
+          cd ~/nodejs-gitaction
           git pull origin master
           npm install --production
           pm2 restart node-app
