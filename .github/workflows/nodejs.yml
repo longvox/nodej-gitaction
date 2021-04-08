@@ -41,6 +41,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd ~/nodejs-gitaction
+          pwd
           git pull origin master
           npm install --production
           pm2 restart node-app
