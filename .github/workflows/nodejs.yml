@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - "**"
 
 jobs:
   test:
@@ -24,6 +25,7 @@ jobs:
       run: |
         npm install
         npm test
+        npm run lint
       env:
         CI: true
 
